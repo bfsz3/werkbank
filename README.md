@@ -33,6 +33,20 @@ pnpm add @werkbank/ui@link:../werkbank
 
 Der Pfad ist relativ zur `package.json` des Projekts (aus `spielportal/apps/web` heißt er `link:../../../werkbank`).
 
+Weil die Bibliothek außerhalb des Projekts liegt, muss Vite ihre Dateien (u. a. die Schriften) ausliefern dürfen. In `vite.config.ts`:
+
+```ts
+import { fileURLToPath } from 'node:url';
+import { searchForWorkspaceRoot } from 'vite';
+
+export default defineConfig({
+	// …
+	server: {
+		fs: { allow: [searchForWorkspaceRoot(process.cwd()), fileURLToPath(new URL('../werkbank', import.meta.url))] }
+	}
+});
+```
+
 Das Paket liefert gebaute Dateien aus `dist/`. Nach einer Änderung an der Bibliothek einmal bauen:
 
 ```bash
