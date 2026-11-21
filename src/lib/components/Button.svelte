@@ -3,7 +3,7 @@
 	import type { HTMLAnchorAttributes, HTMLButtonAttributes } from 'svelte/elements';
 
 	type Props = Omit<HTMLButtonAttributes, 'children'> &
-		Pick<HTMLAnchorAttributes, 'target' | 'rel'> & {
+		Pick<HTMLAnchorAttributes, 'target' | 'rel' | 'download' | 'hreflang'> & {
 			/** Mit href wird der Knopf zu einem Link (<a>). */
 			href?: string;
 			variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
@@ -29,6 +29,8 @@
 		disabled,
 		target,
 		rel,
+		download,
+		hreflang,
 		...rest
 	}: Props = $props();
 
@@ -43,7 +45,7 @@
 </script>
 
 {#if href !== undefined}
-	<a {...rest as HTMLAnchorAttributes} {href} {target} {rel} class={classes}>
+	<a {...rest as HTMLAnchorAttributes} {href} {target} {rel} {download} {hreflang} class={classes}>
 		{#if icon}<span class="wb-button__icon" aria-hidden="true">{@render icon()}</span>{/if}
 		{@render children?.()}
 	</a>
