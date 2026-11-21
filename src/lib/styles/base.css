@@ -1,0 +1,96 @@
+/*
+ * Werkbank – gemeinsame Grundlage für alle Themes.
+ * Enthält nur theme-unabhängige Skalen (Abstände, Schriftgrößen, Ebenen) und ein schlankes Grundlayout.
+ * Farben, Rundungen, Schatten, Schrift und Bewegung kommen aus dem Theme (themes/*.css).
+ */
+
+:root {
+	--wb-space-1: 0.25rem;
+	--wb-space-2: 0.5rem;
+	--wb-space-3: 0.75rem;
+	--wb-space-4: 1rem;
+	--wb-space-5: 1.5rem;
+	--wb-space-6: 2rem;
+	--wb-space-7: 3rem;
+	--wb-space-8: 4.5rem;
+
+	--wb-text-xs: 0.75rem;
+	--wb-text-sm: 0.875rem;
+	--wb-text-md: 1rem;
+	--wb-text-lg: 1.1875rem;
+	--wb-text-xl: 1.5rem;
+	--wb-text-2xl: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem);
+	--wb-text-3xl: clamp(2.25rem, 1.4rem + 3.4vw, 4.25rem);
+
+	--wb-content-width: 72rem;
+
+	--wb-z-header: 50;
+	--wb-z-dialog: 100;
+	--wb-z-toast: 200;
+}
+
+[data-theme] {
+	background: var(--wb-bg);
+	color: var(--wb-text);
+	font-family: var(--wb-font-body);
+	font-size: var(--wb-text-md);
+	line-height: 1.55;
+	-webkit-font-smoothing: antialiased;
+	accent-color: var(--wb-accent);
+}
+
+[data-theme] *,
+[data-theme] *::before,
+[data-theme] *::after {
+	box-sizing: border-box;
+}
+
+[data-theme] :where(h1, h2, h3, h4) {
+	font-family: var(--wb-font-display);
+	font-weight: var(--wb-weight-display);
+	letter-spacing: var(--wb-tracking-display);
+	line-height: 1.1;
+	margin: 0;
+	text-wrap: balance;
+}
+
+[data-theme] :where(p) {
+	margin: 0;
+	text-wrap: pretty;
+}
+
+[data-theme] :where(a) {
+	color: inherit;
+}
+
+[data-theme] :where(:focus-visible) {
+	outline: 2px solid var(--wb-focus);
+	outline-offset: 2px;
+}
+
+[data-theme] ::selection {
+	background: var(--wb-highlight);
+	color: var(--wb-highlight-text);
+}
+
+html[data-theme] {
+	min-height: 100%;
+}
+
+html[data-theme] body {
+	margin: 0;
+	min-height: 100dvh;
+}
+
+/* Hilfsklasse für Inhalte, die nur Screenreader hören sollen. */
+.wb-visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
