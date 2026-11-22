@@ -1,0 +1,93 @@
+/*
+ * Theme „arcade“: verspielt, warm, mit harten Versatzschatten wie bei Spielhallen-Knöpfen.
+ * Gedacht für das Spielportal. Aktivieren: <html data-theme="arcade">.
+ * Hell = cremiges Papier mit Tinte, dunkel = Nachthimmel mit Neonakzent.
+ */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/bricolage-grotesque';
+
+[data-theme='arcade'] {
+	color-scheme: light dark;
+
+	/* Tinte: Farbe für Konturen und harte Schatten */
+	--wb-ink: light-dark(#23173a, #06030d);
+
+	/* Flächen */
+	--wb-bg: light-dark(#fbf5ea, #120d20);
+	--wb-bg-subtle: light-dark(#f4e9d6, #18112b);
+	--wb-surface: light-dark(#fffdf8, #1f1735);
+	--wb-surface-raised: light-dark(#ffffff, #291f45);
+	--wb-border: light-dark(#e8d9bf, #372b57);
+	--wb-border-strong: light-dark(#23173a, #4b3d72);
+
+	/* Text */
+	--wb-text: light-dark(#23173a, #f6f0ff);
+	--wb-text-muted: light-dark(#5f5275, #b9adcf);
+	--wb-text-faint: light-dark(#8d80a3, #8577a3);
+
+	/* Akzent und Hervorhebung */
+	--wb-accent: light-dark(#ff5a36, #ff6d4d);
+	--wb-accent-hover: light-dark(#ff7350, #ff8a6e);
+	--wb-accent-text: light-dark(#23173a, #1b0b05);
+	--wb-accent-soft: light-dark(#ffe3d9, #3a1f2e);
+	--wb-highlight: light-dark(#ffd23f, #ffd23f);
+	--wb-highlight-text: light-dark(#23173a, #23173a);
+
+	/* Zustände */
+	--wb-success: light-dark(#13804f, #4fe0a0);
+	--wb-warning: light-dark(#a35a00, #ffbf47);
+	--wb-danger: light-dark(#d0203a, #ff6b81);
+	--wb-danger-text: light-dark(#ffffff, #2a0309);
+	--wb-focus: light-dark(#7b3fe4, #c9a8ff);
+
+	/* Form */
+	--wb-radius-sm: 8px;
+	--wb-radius-md: 14px;
+	--wb-radius-lg: 22px;
+	--wb-radius-pill: 999px;
+	--wb-border-width: 2px;
+
+	/* Tiefe: harte Versatzschatten in Tinte */
+	--wb-shadow-color: light-dark(rgb(35 23 58 / 0.14), rgb(0 0 0 / 0.55));
+	--wb-shadow-sm: 0 2px 0 var(--wb-ink);
+	--wb-shadow-md: 0 4px 0 var(--wb-ink), 0 10px 24px -10px var(--wb-shadow-color);
+	--wb-shadow-lg: 0 6px 0 var(--wb-ink), 0 28px 56px -18px var(--wb-shadow-color);
+	--wb-button-border: var(--wb-ink);
+	--wb-button-shadow: 0 4px 0 var(--wb-ink);
+	--wb-button-shadow-hover: 0 6px 0 var(--wb-ink);
+	--wb-card-border: light-dark(#23173a, #4a3d70);
+	--wb-control-border: light-dark(#23173a, #5a4c85);
+
+	/* Schrift */
+	--wb-font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--wb-font-display: 'Bricolage Grotesque Variable', 'Inter Variable', system-ui, sans-serif;
+	--wb-font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+	--wb-weight-display: 800;
+	--wb-tracking-display: -0.025em;
+
+	/* Bewegung: federnd */
+	--wb-duration-fast: 120ms;
+	--wb-duration-base: 240ms;
+	--wb-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+	--wb-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+	--wb-lift: -2px;
+	--wb-press: 4px;
+	--wb-tilt: -0.6deg;
+}
+
+[data-theme='arcade'][data-mode='light'] {
+	color-scheme: light;
+}
+
+[data-theme='arcade'][data-mode='dark'] {
+	color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-theme='arcade'] {
+		--wb-duration-fast: 0ms;
+		--wb-duration-base: 0ms;
+		--wb-lift: 0px;
+		--wb-tilt: 0deg;
+	}
+}

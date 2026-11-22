@@ -1,0 +1,90 @@
+/*
+ * Theme „neutral“: sachlich, ruhig, für Werkzeuge und Fachanwendungen.
+ * Aktivieren: <html data-theme="neutral">. Hell/dunkel folgt dem System, außer data-mode="light|dark" ist gesetzt.
+ * Farben nutzen light-dark(); deshalb steuert color-scheme den Modus.
+ */
+@import '@fontsource-variable/inter';
+
+[data-theme='neutral'] {
+	color-scheme: light dark;
+
+	/* Tinte: Konturfarbe (hier zurückhaltend) */
+	--wb-ink: light-dark(#1a1b1e, #000000);
+
+	/* Flächen */
+	--wb-bg: light-dark(#f6f6f3, #111214);
+	--wb-bg-subtle: light-dark(#efefeb, #16171a);
+	--wb-surface: light-dark(#ffffff, #1b1c20);
+	--wb-surface-raised: light-dark(#ffffff, #22242a);
+	--wb-border: light-dark(#e3e3de, #2c2e35);
+	--wb-border-strong: light-dark(#c6c6bf, #444852);
+
+	/* Text */
+	--wb-text: light-dark(#1a1b1e, #ececef);
+	--wb-text-muted: light-dark(#575a61, #a4a7b0);
+	--wb-text-faint: light-dark(#85888f, #737680);
+
+	/* Akzent und Hervorhebung */
+	--wb-accent: light-dark(#2b55c4, #86a2ff);
+	--wb-accent-hover: light-dark(#2249ad, #a3b8ff);
+	--wb-accent-text: light-dark(#ffffff, #0c1231);
+	--wb-accent-soft: light-dark(#e9eefb, #1d2442);
+	--wb-highlight: light-dark(#dfe7fb, #2a3460);
+	--wb-highlight-text: light-dark(#1b336f, #e0e7ff);
+
+	/* Zustände */
+	--wb-success: light-dark(#17794a, #5fd39a);
+	--wb-warning: light-dark(#9a5b00, #f0b45a);
+	--wb-danger: light-dark(#c0322b, #ff8a80);
+	--wb-danger-text: light-dark(#ffffff, #2a0705);
+	--wb-focus: light-dark(#2b55c4, #86a2ff);
+
+	/* Form */
+	--wb-radius-sm: 4px;
+	--wb-radius-md: 6px;
+	--wb-radius-lg: 10px;
+	--wb-radius-pill: 999px;
+	--wb-border-width: 1px;
+
+	/* Tiefe */
+	--wb-shadow-color: light-dark(rgb(24 26 32 / 0.08), rgb(0 0 0 / 0.45));
+	--wb-shadow-sm: 0 1px 2px var(--wb-shadow-color);
+	--wb-shadow-md: 0 1px 2px var(--wb-shadow-color), 0 6px 16px -4px var(--wb-shadow-color);
+	--wb-shadow-lg: 0 2px 4px var(--wb-shadow-color), 0 24px 48px -12px var(--wb-shadow-color);
+	--wb-button-border: transparent;
+	--wb-button-shadow: var(--wb-shadow-sm);
+	--wb-button-shadow-hover: var(--wb-shadow-md);
+	--wb-card-border: var(--wb-border);
+	--wb-control-border: var(--wb-border-strong);
+
+	/* Schrift */
+	--wb-font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--wb-font-display: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+	--wb-font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+	--wb-weight-display: 650;
+	--wb-tracking-display: -0.022em;
+
+	/* Bewegung */
+	--wb-duration-fast: 110ms;
+	--wb-duration-base: 180ms;
+	--wb-ease: cubic-bezier(0.2, 0, 0, 1);
+	--wb-ease-bounce: cubic-bezier(0.2, 0, 0, 1);
+	--wb-lift: 0px;
+	--wb-press: 0px;
+	--wb-tilt: 0deg;
+}
+
+[data-theme='neutral'][data-mode='light'] {
+	color-scheme: light;
+}
+
+[data-theme='neutral'][data-mode='dark'] {
+	color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-theme='neutral'] {
+		--wb-duration-fast: 0ms;
+		--wb-duration-base: 0ms;
+	}
+}
