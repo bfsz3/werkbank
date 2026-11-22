@@ -25,15 +25,29 @@ Nur was gebraucht wird:
 
 ## In ein anderes Projekt einbinden
 
-Die Bibliothek wird nicht veröffentlicht, sondern lokal verlinkt. Im Projekt (Svelte 5 + Vite/SvelteKit):
+Werkbank wird nicht in eine Registry veröffentlicht. Projekte binden einen **Release-Tag** aus diesem (privaten) Repo ein. Jeder Tag `v<version>` enthält das fertig gebaute `dist/` und kein `prepare`-Skript; bei der Installation läuft also kein Build.
 
-```bash
-pnpm add @werkbank/ui@link:../werkbank
+```jsonc
+// package.json des Projekts
+"dependencies": {
+	"@werkbank/ui": "git+https://github.com/bfsz3/werkbank.git#v0.1.0"
+}
 ```
 
-Der Pfad ist relativ zur `package.json` des Projekts (aus `spielportal/apps/web` heißt er `link:../../../werkbank`).
+Zugriff: Lokal reicht die normale GitHub-Anmeldung von git. In CI braucht das Projekt Lesezugriff auf dieses Repo (z. B. Deploy-Key oder fein granularer Token mit `contents: read`); siehe die Doku des jeweiligen Projekts.
 
-Weil die Bibliothek außerhalb des Projekts liegt, muss Vite ihre Dateien (u. a. die Schriften) ausliefern dürfen. In `vite.config.ts`:
+Aktualisieren: Tag in der `package.json` des Projekts anheben, `pnpm install`, CHANGELOG lesen.
+
+### Gleichzeitig an Bibliothek und Projekt arbeiten
+
+Statt eines Tags vorübergehend lokal verlinken (nicht committen):
+
+```bash
+pnpm add @werkbank/ui@link:../werkbank   # Pfad relativ zur package.json des Projekts
+pnpm --dir ../werkbank exec svelte-package --watch
+```
+
+Weil die Bibliothek dann außerhalb des Projekts liegt, muss Vite ihre Dateien (u. a. die Schriften) ausliefern dürfen. In `vite.config.ts`:
 
 ```ts
 import { fileURLToPath } from 'node:url';
@@ -47,13 +61,11 @@ export default defineConfig({
 });
 ```
 
-Das Paket liefert gebaute Dateien aus `dist/`. Nach einer Änderung an der Bibliothek einmal bauen:
+### Release erstellen
 
-```bash
-pnpm --dir ../werkbank build
-```
-
-`pnpm install` in der Werkbank baut ebenfalls (Skript `prepare`). Wer an Bibliothek und Projekt gleichzeitig arbeitet, lässt `pnpm --dir ../werkbank exec svelte-package --watch` mitlaufen.
+1. Abschnitt `## [x.y.z]` in `CHANGELOG.md` ergänzen und auf `main` committen.
+2. `scripts/release.sh x.y.z` – setzt die Version, prüft, baut und taggt einen Release-Commit mit `dist/`.
+3. `git push origin main vx.y.z`
 
 ### Theme wählen
 
