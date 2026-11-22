@@ -1,0 +1,29 @@
+Copyright (c) 2026 Schubert Solutions UG (haftungsbeschränkt). Alle Rechte vorbehalten.
+
+Der Quellcode dieses Repositorys ist öffentlich einsehbar. Das ist keine Open-Source-Lizenz:
+Vervielfältigung, Veränderung, Verbreitung und Nutzung der Software oder von Teilen davon
+in anderen Projekten sind nur mit vorheriger schriftlicher Zustimmung der
+Schubert Solutions UG (haftungsbeschränkt) erlaubt.
+
+Die Software wird ohne Gewähr bereitgestellt. Soweit gesetzlich zulässig, ist jede Haftung
+für Schäden, die aus der Nutzung entstehen, ausgeschlossen.
+
+-------------------------------------------------------------------------------------------
+
+Copyright (c) 2026 Schubert Solutions UG (haftungsbeschränkt). All rights reserved.
+
+The source code in this repository is publicly visible. This is not an open-source licence:
+copying, modifying, distributing or using the software, in whole or in part, in other
+projects requires prior written permission from Schubert Solutions UG (haftungsbeschränkt).
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+
+-------------------------------------------------------------------------------------------
+
+Bestandteile Dritter / Third-party components
+
+Mitgelieferte bzw. als Abhängigkeit eingebundene Schriften stehen unter ihren eigenen Lizenzen
+und sind von obigem Vorbehalt nicht erfasst:
+
+- Inter (@fontsource-variable/inter) – SIL Open Font License 1.1
+- Bricolage Grotesque (@fontsource-variable/bricolage-grotesque) – SIL Open Font License 1.1

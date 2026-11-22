@@ -25,16 +25,14 @@ Nur was gebraucht wird:
 
 ## In ein anderes Projekt einbinden
 
-Werkbank wird nicht in eine Registry veröffentlicht. Projekte binden einen **Release-Tag** aus diesem (privaten) Repo ein. Jeder Tag `v<version>` enthält das fertig gebaute `dist/` und kein `prepare`-Skript; bei der Installation läuft also kein Build.
+Werkbank wird nicht in eine Registry veröffentlicht. Projekte binden einen **Release-Tag** aus diesem Repo ein. Jeder Tag `v<version>` enthält das fertig gebaute `dist/` und kein `prepare`-Skript; bei der Installation läuft also kein Build.
 
 ```jsonc
 // package.json des Projekts
 "dependencies": {
-	"@werkbank/ui": "git+https://github.com/bfsz3/werkbank.git#v0.1.0"
+	"@werkbank/ui": "git+https://github.com/bfsz3/werkbank.git#v0.1.1"
 }
 ```
-
-Zugriff: Lokal reicht die normale GitHub-Anmeldung von git. In CI braucht das Projekt Lesezugriff auf dieses Repo (z. B. Deploy-Key oder fein granularer Token mit `contents: read`); siehe die Doku des jeweiligen Projekts.
 
 Aktualisieren: Tag in der `package.json` des Projekts anheben, `pnpm install`, CHANGELOG lesen.
 
@@ -129,3 +127,8 @@ pnpm check    # svelte-check
 pnpm test     # Vitest: Tokens, Kontraste, Server-Rendering der Komponenten
 pnpm build    # Paket nach dist/
 ```
+
+## Lizenz
+
+Copyright © 2026 Schubert Solutions UG (haftungsbeschränkt). Alle Rechte vorbehalten.
+Der Quellcode ist öffentlich einsehbar, aber nicht frei lizenziert; Nutzung in anderen Projekten nur mit Zustimmung. Details und Lizenzen der Schriften in [`LICENSE`](LICENSE).
